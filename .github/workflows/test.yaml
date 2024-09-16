@@ -1,7 +1,7 @@
-name: build and run
+name: build_n_run
 on: [push]
 jobs:
-    build and run:
+    build_n_run:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
