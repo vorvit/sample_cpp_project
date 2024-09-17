@@ -1,7 +1,7 @@
 name: build_n_run
 on: [push]
 jobs:
-    build_n_run:
+    build:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
@@ -14,6 +14,7 @@ jobs:
                 build/main
                 build/tests
     tests:
+        needs: build
         runs-on: ubuntu-latest
         steps:
           - uses: actions/download-artifact@v4
@@ -22,6 +23,7 @@ jobs:
           - run: chmod +x tests && ./tests
     
     run:
+        needs: build
         runs-on: ubuntu-latest
         steps:
           - uses: actions/download-artifact@v4
